@@ -1,3 +1,10 @@
+"""
+projekt_3.py: druhý projekt do Engeto Online Python Akademie
+
+author: Martina Spieszová
+email: mspieszova@gmail.com
+discord: MartinaSpi
+"""
 from bs4 import BeautifulSoup as bs
 from requests import get
 from urllib.parse import urlparse, parse_qs
