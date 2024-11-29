@@ -1,5 +1,5 @@
 """
-projekt_3.py: druhý projekt do Engeto Online Python Akademie
+projekt_3.py: třetí projekt do Engeto Online Python Akademie
 
 author: Martina Spieszová
 email: mspieszova@gmail.com
