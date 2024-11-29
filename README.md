@@ -15,9 +15,11 @@ Pro správnou funkčnost programu musíte mít nainstalovány následující kni
 - `beautifulsoup4`
 - `requests`
 - `click`
-
+Knihovny, ketré jsou použity v kódu jsou uloženy v souboru requirements.txt. Při insatlaci doporučuji použít nové virtuální prostředí.
 Pro instalaci těchto knihoven použijte pip:
 pip install beautifulsoup4 requests click
+nebo
+pip install -r requirements.txt
 
 ## Použití
 
@@ -25,6 +27,7 @@ pip install beautifulsoup4 requests click
 2. V příkazové řádce spusťte skript s těmito argumenty:
     - `odkaz`: URL adresu stránky obsahující volební výsledky.
     - `vystupni_soubor`: Cesta a název CSV souboru, kam chcete výsledky uložit.
+python election_scrapper.py <odkaz-územního_celku> <vysledny-soubor>
 
 ### Příklad použití:
 Pokud chcete stáhnout výsledky z webu https://www.volby.cz/pls/ps2017nss/vysledky a uložit je do souboru `vysledky.csv`, spusťte následující příkaz:
@@ -42,6 +45,13 @@ Výstupní CSV soubor bude obsahovat sloupce, které odpovídají získaným dat
 - `location` (název obce)
 - `Počet obyvatel` (počet obyvatel v obci)
 - A další informace podle struktury tabulky na webu.
+
+### Ukázka výstupního CSV:
+code,location,Voličiv seznamu,Vydanéobálky,Platnéhlasy,...
+565423,"Bdín",51,34,34,1,0,0,7,0,1,1,1,0,0,0,0,3,0,0,1,15,0,0,0,0,0,0,0,4,0
+541672,"Branov",170,120,119,10,1,0,14,0,0,23,0,1,1,0,0,13,0,0,2,40,0,0,5,0,1,0,0,7,1
+565041,"Břežany",106,71,69,6,0,0,4,1,4,12,0,1,1,0,0,9,0,0,2,20,0,0,0,0,0,2,0,6,1
+...
 
 ## Licenční podmínky
 
