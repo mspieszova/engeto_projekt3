@@ -47,9 +47,9 @@ Výstupní CSV soubor bude obsahovat sloupce, které odpovídají získaným dat
 - A další informace podle struktury tabulky na webu.
 
 ### Ukázka výstupního CSV:
-code,location,Voličiv seznamu,Vydanéobálky,Platnéhlasy,Občanská demokratická strana...
-537021,Běrunice-2,47,22,22,1,0,0,2,0,6,1,1,0,0,0,0,2,0,0,0,9,0,0,0,0,0,0,0,0,0
-537021,Běrunice-3,177,115,115,8,0,0,9,0,11,14,2,1,4,0,0,3,0,5,1,34,0,0,2,0,1,0,1,19,0
+code,location,Voličiv seznamu,Vydanéobálky,Platnéhlasy,Občanská demokratická strana...<br>
+537021,Běrunice-2,47,22,22,1,0,0,2,0,6,1,1,0,0,0,0,2,0,0,0,9,0,0,0,0,0,0,0,0,0<br>
+537021,Běrunice-3,177,115,115,8,0,0,9,0,11,14,2,1,4,0,0,3,0,5,1,34,0,0,2,0,1,0,1,19,0<br>
 ...
 
 ## Licenční podmínky
