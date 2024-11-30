@@ -1,5 +1,5 @@
 """
-projekt_3.py: třetí projekt do Engeto Online Python Akademie
+projekt_3.py: druhý projekt do Engeto Online Python Akademie
 
 author: Martina Spieszová
 email: mspieszova@gmail.com
@@ -135,6 +135,36 @@ def ziskat_kod_obce(url):
     except Exception as e:
         raise ValueError(f"Chyba při zpracování URL: {url}, chyba: {e}")
 
+def ziskat_kod_kraje(url):
+    """
+    Extrahuje hodnotu parametru "x" z URL adresy.
+
+    Funkce zpracuje zadanou URL adresu, rozdělí její parametry a vrátí hodnotu 
+    parametru "xkraj". Pokud parametr "xkraj" v URL neexistuje, vrátí `None`.
+
+    :param url: URL adresa, ze které se má extrahovat parametr "xkraj".
+    :type url: str
+    :return: Hodnota parametru "xkraj", pokud existuje, jinak None.
+    :rtype: str | None
+    
+    :raises ValueError: Pokud je zadaná URL adresa neplatná.
+
+    :Example:
+    >>> url = "https://example.com/page?xkraj=12345&name=test"
+    >>> ziskat_kod_kraje(url)
+    '1'
+
+    >>> url = "https://example.com/page?name=test"
+    >>> ziskat_kod_kraje(url)
+    None
+    """
+    try:
+        # Získání parametrů z URL
+        query_params = parse_qs(urlparse(url).query)
+        # Vrácení hodnoty parametru 'xkraj', nebo None, pokud neexistuje
+        return query_params.get("xkraj", [None])[0]
+    except Exception as e:
+        raise ValueError(f"Chyba při zpracování URL: {url}, chyba: {e}")
 
 
 
@@ -166,6 +196,8 @@ def ziskej_data(rozdelene_html, url):
     """
     # Inicializace slovníku s počáteční hodnotou 'code' z URL
     vysledky = {"code": ziskat_kod_obce(url)}
+    vysledky_kraj = ziskat_kod_kraje(url)
+ 
     
     # Vyhledání potřebných sekcí v HTML
     tabulka_1 = rozdelene_html.find("div", {"id": "publikace"})
@@ -173,9 +205,14 @@ def ziskej_data(rozdelene_html, url):
     tabulka_3 = rozdelene_html.find_all("div", {"class": "t2_470"})
     
     try:
-        # Získání lokace
-        vysledky["location"] = (tabulka_2.find_all("h3"))[2].text.split(" ")[1]
-        
+        # Získání lokace  
+        if int(vysledky_kraj) == 1:           
+            vysledky["location"] = (tabulka_2.find_all("h3"))[1].text.split(" ")[1].strip()+"-"+(tabulka_2.find_all("h3"))[2].text.split(" ")[1].strip()
+
+        elif (tabulka_2.find_all("h3"))[3].text.split(" ")[1].strip():
+            vysledky["location"] = (tabulka_2.find_all("h3"))[2].text.split(" ")[1].strip()+"-"+(tabulka_2.find_all("h3"))[3].text.split(" ")[1].strip()
+        else:
+            vysledky["location"] = (tabulka_2.find_all("h3"))[2].text.split(" ")[1].strip()
         # Extrakce hodnot z tabulky 1
         vysledky[tabulka_1.find("th", {"id": "sa2"}).text.strip()] = tabulka_1.find("td", {"headers": "sa2"}).text.strip().replace('\xa0', '')
         vysledky[tabulka_1.find("th", {"id": "sa3"}).text.strip()] = tabulka_1.find("td", {"headers": "sa3"}).text.strip().replace('\xa0', '')
@@ -223,8 +260,8 @@ def export_do_csv(vysledky_list, vystupni_soubor):
 
 
 @click.command()
-@click.argument("odkaz")
-@click.argument("vystupni_soubor")
+@click.argument("odkaz") 
+@click.argument("vystupni_soubor") 
 
 def cli(odkaz, vystupni_soubor):
     """
@@ -267,5 +304,4 @@ def cli(odkaz, vystupni_soubor):
 
 if __name__=="__main__":
     cli()
-
 
