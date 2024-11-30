@@ -30,7 +30,7 @@ pip install -r requirements.txt
 python election_scrapper.py <odkaz-územního_celku> <vysledny-soubor>
 
 ### Příklad použití:
-Pokud chcete stáhnout výsledky z webu https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2108 a uložit je do souboru `vysledky.csv`, spusťte následující příkaz:
+Pokud chcete stáhnout výsledky z webu https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2108 a uložit je do souboru `vysledky.csv`, spusťte následující příkaz:<br>
 election_scrapper.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2108" vysledky.csv
 
 Po spuštění programu se:
