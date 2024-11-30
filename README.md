@@ -30,8 +30,8 @@ pip install -r requirements.txt
 python election_scrapper.py <odkaz-územního_celku> <vysledny-soubor>
 
 ### Příklad použití:
-Pokud chcete stáhnout výsledky z webu https://www.volby.cz/pls/ps2017nss/vysledky a uložit je do souboru `vysledky.csv`, spusťte následující příkaz:
-python script.py "https://www.volby.cz/pls/ps2017nss/vysledky" vysledky.csv
+Pokud chcete stáhnout výsledky z webu https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2108 a uložit je do souboru `vysledky.csv`, spusťte následující příkaz:
+election_scrapper.py "https://www.volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=2&xnumnuts=2108" vysledky.csv
 
 Po spuštění programu se:
 - Naváže spojení se serverem.
@@ -47,10 +47,9 @@ Výstupní CSV soubor bude obsahovat sloupce, které odpovídají získaným dat
 - A další informace podle struktury tabulky na webu.
 
 ### Ukázka výstupního CSV:
-code,location,Voličiv seznamu,Vydanéobálky,Platnéhlasy,...
-565423,"Bdín",51,34,34,1,0,0,7,0,1,1,1,0,0,0,0,3,0,0,1,15,0,0,0,0,0,0,0,4,0
-541672,"Branov",170,120,119,10,1,0,14,0,0,23,0,1,1,0,0,13,0,0,2,40,0,0,5,0,1,0,0,7,1
-565041,"Břežany",106,71,69,6,0,0,4,1,4,12,0,1,1,0,0,9,0,0,2,20,0,0,0,0,0,2,0,6,1
+code,location,Voličiv seznamu,Vydanéobálky,Platnéhlasy,Občanská demokratická strana...
+537021,Běrunice-2,47,22,22,1,0,0,2,0,6,1,1,0,0,0,0,2,0,0,0,9,0,0,0,0,0,0,0,0,0
+537021,Běrunice-3,177,115,115,8,0,0,9,0,11,14,2,1,4,0,0,3,0,5,1,34,0,0,2,0,1,0,1,19,0
 ...
 
 ## Licenční podmínky
